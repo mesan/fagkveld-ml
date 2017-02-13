@@ -32,16 +32,16 @@ public class Oppgaver {
     //  Metodene under er ment kun ment som forslag til oppg. 1
     //  ###########################################################
 
-    private static int[][] flatUtBilder(final int[][][] images) {
+    private static int[][] flatUtBilder(final int[][][] bilder) {
         //TODO: Flat ut bildene fra 2 dimensjoner til 1.
         return null;
     }
-    private static int[] flatUtEttBilde(final int[][] image) {
+    private static int[] flatUtEttBilde(final int[][] bilde) {
         //TODO: Hjelpemetode til "flatUtBilder" metoden over?
         return null;
     }
 
-    private static double[][] normaliser(final int[][] trainingImages) {
+    private static double[][] normaliser(final int[][] bilder) {
         //TODO: Normaliser dataene
         return null;
     }
