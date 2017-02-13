@@ -39,8 +39,21 @@ public class Oppgaver {
                 .leggTilLag(200, 10)
                 .bygg();
 
-        nevraltNettverk.setAntallEpoker(300);
-        nevraltNettverk.setBatchStorrelse(100);
+        nevraltNettverk.setAntallEpoker(100);
+        nevraltNettverk.setBatchStorrelse(40);
+
+        // ###############################################################
+        // OPPGAVE 3: TREN OG TEST
+        // ###############################################################
+
+        nevraltNettverk.tren(normaliserteTreningsbilder, dataLaster.getTreningsfasit());
+
+        nevraltNettverk.evaluer(normaliserteTestbilder, dataLaster.getTestfasit());
+
+        // ###############################################################
+        // OPPGAVE 4: LEK DEG MED PARAMETRE
+        // ###############################################################
+
 
     }
 
