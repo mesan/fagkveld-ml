@@ -10,18 +10,21 @@ public class Oppgaver {
 
     public static void main(final String[] args) throws Exception {
 
-        // ###############################################################
-        // OPPGAVE 1: PREPROSSESERING -> FLAT UT OG NORMALISER
-        // ###############################################################
-
+        // Laster inn bilder. Velg om du vil bruke hele eller deler av datasettet.
         final Boolean lesInnHeleDatasettet = false;
         final DataLaster dataLaster = new DataLaster(lesInnHeleDatasettet);
 
-        // OPPG 1 a) Flat ut bilder
-        int[][] flateBilder = flatUtBilder(dataLaster.getTreningsbilder());
+        // ###############################################################
+        // OPPGAVE 1: PREPROSESSERING -> FLAT UT OG NORMALISER
+        // ###############################################################
 
-        // OPPG 1 b) Konverter pikselverdiene fra [0, 255] til [-1, 1] (alt. [0, 1])
-        double[][] normaliserteBilder = normaliser(flateBilder);
+        // OPPG 1 a) Flat ut bilder
+        int[][] flateTreningsbilder = flatUtBilder(dataLaster.getTreningsbilder());
+        int[][] flateTestbilder = flatUtBilder(dataLaster.getTestbilder());
+
+        // OPPG 1 b) Konverter pikselverdiene fra [0, 255] til [-1, 1])
+        double[][] normaliserteTreningsbilder = normaliser(flateTreningsbilder);
+        double[][] normaliserteTestbilder = normaliser(flateTestbilder);
 
     }
 
