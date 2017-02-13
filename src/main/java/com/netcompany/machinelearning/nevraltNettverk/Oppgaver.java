@@ -54,6 +54,22 @@ public class Oppgaver {
         // OPPGAVE 4: LEK DEG MED PARAMETRE
         // ###############################################################
 
+        // Prøv med forskjellige lag.
+        // Sett forskjellige lengder på epoker.
+        // Sett forskjellige batch størrelser.
+
+        final NevraltNettverk nevraltNettverk2 = new NevraltNettverkBygger()
+                .leggTilLag(784, 400)
+                .leggTilLag(400, 50)
+                .leggTilLag(50, 20)
+                .bygg();
+
+        nevraltNettverk.setAntallEpoker(500);
+        nevraltNettverk.setBatchStorrelse(40);
+
+        // ###############################################################
+        // OPPGAVE 5: Implementer app
+        // ###############################################################
 
     }
 
