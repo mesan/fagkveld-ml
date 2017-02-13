@@ -26,23 +26,51 @@ public class Oppgaver {
         double[][] normaliserteTreningsbilder = normaliser(flateTreningsbilder);
         double[][] normaliserteTestbilder = normaliser(flateTestbilder);
 
+
+        // ###############################################################
+        // OPPGAVE 2: NEVRALT NETTVERK -> BYGG NETTVERK
+        // ###############################################################
+
+        // Bruk NevralNettverkBygger til å opprette ett nettverk.
+        // For nettverkslagene: husk at hvert input-lag må ha samme antall noder som forrige output-laget
     }
 
-    //  ###########################################################
-    //  Metodene under er ment kun ment som forslag til oppg. 1
-    //  ###########################################################
+
 
     private static int[][] flatUtBilder(final int[][][] bilder) {
-        //TODO: Flat ut bildene fra 2 dimensjoner til 1.
-        return null;
+        final int numberOfImages = bilder.length;
+        final int[][] flateBilder = new int[numberOfImages][bilder[0].length * bilder[0][0].length];
+
+        for (int i = 0; i < numberOfImages; i++) {
+            flateBilder[i] = flatUtEttBilde(bilder[i]);
+        }
+        return flateBilder;
     }
     private static int[] flatUtEttBilde(final int[][] bilde) {
-        //TODO: Hjelpemetode til "flatUtBilder" metoden over?
-        return null;
+        int pikselindeks = 0;
+        final int[] flattBilde = new int[bilde.length * bilde[0].length];
+        for (final int[] rad : bilde) {
+            for (final int piksel : rad) {
+                flattBilde[pikselindeks] = piksel;
+                pikselindeks++;
+            }
+        }
+        return flattBilde;
     }
 
     private static double[][] normaliser(final int[][] bilder) {
-        //TODO: Normaliser dataene
-        return null;
+        final int antallBilder = bilder.length;
+        final int antallPiksler = bilder[0].length;
+
+        final double[][] normaliserteBilder = new double[antallBilder][antallPiksler];
+
+        final double MAX_PIXEL_VERDI = 255.0; // FORDI VI VET DET :)
+
+        for (int bildeIndeks = 0; bildeIndeks < antallBilder; bildeIndeks++) {
+            for (int piksel = 0; piksel < antallPiksler; piksel++) {
+                normaliserteBilder[bildeIndeks][piksel] = (bilder[bildeIndeks][piksel] / MAX_PIXEL_VERDI) * 2 - 1;
+            }
+        }
+        return normaliserteBilder;
     }
 }
