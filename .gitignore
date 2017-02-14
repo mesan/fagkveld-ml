@@ -2,7 +2,11 @@
 *.iml
 *.DS_STORE
 *.idea
+
+# Images
 *.png
+
+# Some generated resources
 /target
 
 # Mobile Tools for Java (J2ME)
