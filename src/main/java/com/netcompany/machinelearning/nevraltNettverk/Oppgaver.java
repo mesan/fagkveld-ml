@@ -1,5 +1,6 @@
 package com.netcompany.machinelearning.nevraltNettverk;
 
+import com.netcompany.machinelearning.app.SifferKlassifikatorApp;
 import com.netcompany.machinelearning.preprosessering.DataLaster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,7 @@ public class Oppgaver {
 
     public static void main(final String[] args) throws Exception {
 
-        // Laster inn bilder. Velg om du vil bruke hele eller deler av datasettet.
+       /* // Laster inn bilder. Velg om du vil bruke hele eller deler av datasettet.
         final Boolean lesInnHeleDatasettet = false;
         final DataLaster dataLaster = new DataLaster(lesInnHeleDatasettet);
 
@@ -65,13 +66,15 @@ public class Oppgaver {
                 .bygg();
 
         nevraltNettverk.setAntallEpoker(500);
-        nevraltNettverk.setBatchStorrelse(40);
+        nevraltNettverk.setBatchStorrelse(40);*/
 
         // ###############################################################
         // OPPGAVE 5: Implementer app
         // ###############################################################
 
-        // Se under SifferKlassifikator
+        // Skriv kode i SifferKlassifikator
+        SifferKlassifikatorApp.start();
+
     }
 
 
