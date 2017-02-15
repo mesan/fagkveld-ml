@@ -71,6 +71,7 @@ public class Oppgaver {
         // OPPGAVE 5: Implementer app
         // ###############################################################
 
+        // Se under SifferKlassifikator
     }
 
 
