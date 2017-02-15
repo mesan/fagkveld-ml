@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
  */
 public class NevraltNettverk {
 
-    private static Logger LOGG = LoggerFactory.getLogger(NevraltNettverk.class);
+    private static final Logger LOGG = LoggerFactory.getLogger(NevraltNettverk.class);
 
     private final Integer antallKlasser;
     private Integer batchStorrelse;
@@ -30,13 +30,14 @@ public class NevraltNettverk {
 
     private final MultiLayerNetwork modell;
 
-
     public NevraltNettverk(final MultiLayerConfiguration nnKonfigurasjon) {
-        LOGG.info("Lager modell...");
+        LOGG.info("Bygger modell...");
         antallEpoker = 1;
         batchStorrelse = 1;
         antallKlasser = DataHjelper.ANTALL_KLASSER;
+        // Lager et dl4j.MultiLayerNetwork (NN) basert på konfigurasjonen som ble bygd i NevraltNettverkBygger
         modell = new MultiLayerNetwork(nnKonfigurasjon);
+        // Init validerer konfigurasjonen av nettet
         modell.init();
     }
 
@@ -70,8 +71,9 @@ public class NevraltNettverk {
      */
     void tren(final double[][] treningsdata, final int[] treningsfasit) {
         Validate.isTrue(treningsdata.length == treningsfasit.length,
-                        "Kan ikke trene modell når antall treningseksempler er ulik antall fasit-klasser!");
+                "Kan ikke trene modell når antall treningseksempler er ulik antall fasit-klasser!");
 
+        // INDArray er en klasse som blir brukt for lineær algebra
         final INDArray treningsMatrise = new NDArray(treningsdata);
         final INDArray shuffletFasitVektor = new NDArray(treningsfasit.length, 1);
         for (int i = 0; i < treningsfasit.length; i++) {
@@ -98,6 +100,7 @@ public class NevraltNettverk {
 
     /**
      * Brukes til å evaluere nettets ytelse basert på nye (usette!) testdata og korresponderende fasit.
+     *
      * @param testdata data (aka. features)
      * @param testfasit fasit (aka. data sine korresponderende klasser)
      */

@@ -57,29 +57,43 @@ public class NevraltNettverkBygger {
      * @return et nevralt nettverk
      */
     public NevraltNettverk bygg() {
-        final NeuralNetConfiguration.ListBuilder lagListe = new NeuralNetConfiguration.Builder()
+        final NeuralNetConfiguration.ListBuilder lagliste = new NeuralNetConfiguration.Builder()
+                // Bruker samme random-seed hver kjøring, slik at hver kjøring gir samme resultat (fint ved debugging)
                 .seed(RAND_SEED)
                 // Bruker algoritmen "stochastic gradient descent" for å optimalisere vekter
                 .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
+                // Antall interasjoner over hver batch (ikke tenk mer på det...)
                 .iterations(1)
+                // Setter læringsraten -> se medLaeringsrate
                 .learningRate(laeringsRate)
-                .updater(Updater.NESTEROVS).momentum(0.9)
+                // Setter algoritmen for oppdatering av vektene i nettet
+                .updater(Updater.NESTEROVS)
+                // Momentum ved oppdatering - hvor mye sist oppdatering av vekt påvirker neste oppdatering (reduserer sjansen for oscillasjon)
+                .momentum(0.9)
+                // Taktikk for å øke nettets evne til å generalisere
                 .regularization(true).l2(1e-4)
                 .list();
 
+        // Bygger Dl4j-lag basert på NNLag-klassen
         for (int i = 0; i < lag.size(); i++) {
             final boolean erOutputLag = i == lag.size() - 1;
             final NNLag nnLag = lag.get(i);
-            lagListe.layer(
+            lagliste.layer(
                     i, (erOutputLag ? new OutputLayer.Builder() : new DenseLayer.Builder())
+                            // Setter antall koblinger inn i laget
                             .nIn(nnLag.INN)
+                            // Setter antall koblinger ut av laget
                             .nOut(nnLag.UT)
-                            .activation(erOutputLag ? "softmax" : "relu") // Sørger for softmax på output-lag
+                            // Bestemmer "activation function" til nodene i laget.
+                            // Relu = rectified linear unit, brukes på de gjemte lagene
+                            // Softmax brukes på siste lag -> gir en sannsynlighetsfordeling over de ulike klassene
+                            .activation(erOutputLag ? "softmax" : "relu")
+                            // Strategi for å initialisere vektene i nettet. Initialiseres disse med smarte verdier, vil nettet konvergere raskere
                             .weightInit(WeightInit.XAVIER)
                             .build());
         }
-        lagListe.pretrain(false).backprop(true);
+        lagliste.pretrain(false).backprop(true);
 
-        return new NevraltNettverk(lagListe.build());
+        return new NevraltNettverk(lagliste.build());
     }
 }
