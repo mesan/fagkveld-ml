@@ -34,6 +34,14 @@ public class Oppgaver {
         // Bruk NevralNettverkBygger til å opprette ett nettverk.
         // For nettverkslagene: husk at hvert input-lag må ha samme antall noder som forrige output-laget
 
+        final NevraltNettverk nevraltNettverk = new NevraltNettverkBygger()
+                .leggTilLag(784, 200)
+                .leggTilLag(200, 10)
+                .bygg();
+
+        nevraltNettverk.setAntallEpoker(100);
+        nevraltNettverk.setBatchStorrelse(40);
+
         // ###############################################################
         // TODO: OPPGAVE 3: TREN OG TEST
         // ###############################################################
