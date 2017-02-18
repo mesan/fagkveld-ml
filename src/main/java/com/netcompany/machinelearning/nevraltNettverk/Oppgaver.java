@@ -46,6 +46,10 @@ public class Oppgaver {
         // TODO: OPPGAVE 3: TREN OG TEST
         // ###############################################################
 
+        nevraltNettverk.tren(normaliserteTreningsbilder, dataLaster.getTreningsfasit());
+
+        nevraltNettverk.evaluer(normaliserteTestbilder, dataLaster.getTestfasit());
+
         // ###############################################################
         // TODO: OPPGAVE 4: LEK DEG MED PARAMETRE
         // ###############################################################
