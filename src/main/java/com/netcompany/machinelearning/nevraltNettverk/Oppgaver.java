@@ -34,6 +34,7 @@ public class Oppgaver {
         // Bruk NevralNettverkBygger til å opprette ett nettverk.
         // For nettverkslagene: husk at hvert input-lag må ha samme antall noder som forrige output-laget
 
+        /*
         final NevraltNettverk nevraltNettverk = new NevraltNettverkBygger()
                 .leggTilLag(784, 200)
                 .leggTilLag(200, 10)
@@ -49,6 +50,7 @@ public class Oppgaver {
         nevraltNettverk.tren(normaliserteTreningsbilder, dataLaster.getTreningsfasit());
 
         nevraltNettverk.evaluer(normaliserteTestbilder, dataLaster.getTestfasit());
+        */
 
         // ###############################################################
         // TODO: OPPGAVE 4: LEK DEG MED PARAMETRE
@@ -57,6 +59,18 @@ public class Oppgaver {
         // Prøv med forskjellige lag.
         // Sett forskjellige lengder på epoker.
         // Sett forskjellige batch-størrelser.
+
+        final NevraltNettverk nevraltNettverk = new NevraltNettverkBygger()
+                .leggTilLag(784, 400)
+                .leggTilLag(400, 50)
+                .leggTilLag(50, 10)
+                .bygg();
+
+        nevraltNettverk.setAntallEpoker(100);
+        nevraltNettverk.setBatchStorrelse(40);
+
+        nevraltNettverk.tren(normaliserteTreningsbilder, dataLaster.getTreningsfasit());
+        nevraltNettverk.evaluer(normaliserteTestbilder, dataLaster.getTestfasit());
 
         // ###############################################################
         // TODO: OPPGAVE 5: Implementer app
