@@ -46,7 +46,7 @@ public class NevraltNettverk {
      *
      * @param antallEpoker antall epoker
      */
-    void setAntallEpoker(final Integer antallEpoker) {
+    public void setAntallEpoker(final Integer antallEpoker) {
         this.antallEpoker = antallEpoker;
     }
 
@@ -59,7 +59,7 @@ public class NevraltNettverk {
      *
      * @param batchStorrelse antall datapunkter som leses mellom hver oppdatering av nettet
      */
-    void setBatchStorrelse(final Integer batchStorrelse) {
+    public void setBatchStorrelse(final Integer batchStorrelse) {
         this.batchStorrelse = batchStorrelse;
     }
 
@@ -69,7 +69,7 @@ public class NevraltNettverk {
      * @param treningsdata data (aka. features)
      * @param treningsfasit fasit (aka. data sine korresponderende klasser)
      */
-    void tren(final double[][] treningsdata, final int[] treningsfasit) {
+    public void tren(final double[][] treningsdata, final int[] treningsfasit) {
         Validate.isTrue(treningsdata.length == treningsfasit.length,
                 "Kan ikke trene modell når antall treningseksempler er ulik antall fasit-klasser!");
 
@@ -123,7 +123,7 @@ public class NevraltNettverk {
      * @param data data som array av samme lengde som modellen var trent på
      * @return predikert klasse som {@link Integer}
      */
-    Integer prediker(final double[] data) {
+    public Integer prediker(final double[] data) {
         Validate.isTrue(data.length == modell.input().shape()[1], "Størrelse på input er ulik det modellen er trent for!");
         Validate.isTrue(erTrent, "Kan ikke predikere data før tren(data, fasit) har blitt kalt!");
 

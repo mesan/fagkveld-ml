@@ -10,7 +10,7 @@ public class Oppgaver {
     private static final Logger LOGG = LoggerFactory.getLogger(Oppgaver.class);
 
     public static void main(final String[] args) throws Exception {
-
+        /*
         // Laster inn bilder. Velg om du vil bruke hele eller deler av datasettet.
         final Boolean lesInnHeleDatasettet = false;
         final DataLaster dataLaster = new DataLaster(lesInnHeleDatasettet);
@@ -34,7 +34,7 @@ public class Oppgaver {
         // Bruk NevralNettverkBygger til å opprette ett nettverk.
         // For nettverkslagene: husk at hvert input-lag må ha samme antall noder som forrige output-laget
 
-        /*
+
         final NevraltNettverk nevraltNettverk = new NevraltNettverkBygger()
                 .leggTilLag(784, 200)
                 .leggTilLag(200, 10)
@@ -50,7 +50,7 @@ public class Oppgaver {
         nevraltNettverk.tren(normaliserteTreningsbilder, dataLaster.getTreningsfasit());
 
         nevraltNettverk.evaluer(normaliserteTestbilder, dataLaster.getTestfasit());
-        */
+
 
         // ###############################################################
         // TODO: OPPGAVE 4: LEK DEG MED PARAMETRE
@@ -71,13 +71,13 @@ public class Oppgaver {
 
         nevraltNettverk.tren(normaliserteTreningsbilder, dataLaster.getTreningsfasit());
         nevraltNettverk.evaluer(normaliserteTestbilder, dataLaster.getTestfasit());
-
+        */
         // ###############################################################
         // TODO: OPPGAVE 5: Implementer app
         // ###############################################################
 
         // Skriv kode i SifferKlassifikator
-        //SifferKlassifikatorApp.start();
+        SifferKlassifikatorApp.start();
 
     }
 
