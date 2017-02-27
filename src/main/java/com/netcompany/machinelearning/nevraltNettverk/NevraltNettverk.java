@@ -115,6 +115,7 @@ public class NevraltNettverk {
         eval.eval(fasitSomOutputMatrise, prediksjoner);
 
         LOGG.info(eval.stats());
+        printConfusionMatrix(eval);
     }
 
     /**
@@ -129,4 +130,54 @@ public class NevraltNettverk {
 
         return modell.predict(new NDArray(data, new int[]{1, data.length}, 'c'))[0];
     }
+
+    public void printConfusionMatrix(Evaluation eval) {
+        int confusionMatrix [][] = new int [antallKlasser][antallKlasser];
+        for (int i = 0; i < antallKlasser; i++) {
+            for (int j = 0; j < antallKlasser; j++) {
+                confusionMatrix[i][j] = eval.getConfusionMatrix().getCount(j, i);
+            }
+        }
+
+        try{
+            int rows = confusionMatrix.length;
+            int columns = confusionMatrix[0].length;
+
+            System.out.println("==========================CONFUSION MATRIX==============================");
+            System.out.println("");
+
+            String str = "\t\t\t\t\t\t\tPREDIKERT SOM\n";
+
+
+
+            for (int i = 0; i < columns; i++) {
+                if (i == 0) {
+                    str += "              \t";
+                }
+                str += "["+i+"]"+"\t";
+            }
+
+            str += "\n";
+
+            str += "            [0]| ";
+
+            for(int i=0;i<rows;i++){
+                for(int j=0;j<columns;j++){
+
+                    str += confusionMatrix[i][j] + "\t";
+                }
+
+                System.out.println(str + "|");
+                if (i == 4) {
+                    str = "VAR FAKTISK ";
+                }
+                else {
+                    str = "            ";
+                }
+                str += "["+(i+1)+"]" + "| ";
+            }
+
+        }catch(Exception e){System.out.println("Matrix is empty!!");}
+    }
+
 }
