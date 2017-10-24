@@ -19,9 +19,18 @@ public class Oppgaver {
         // TODO: OPPGAVE 1: PREPROSESSERING -> FLAT UT OG NORMALISER
         // ###############################################################
 
-        // OPPG 1 a) Flat ut bilder
+        // OPPG 1 a) Flat ut bilder. Se hjelpemetoder nederst
+        int[][][] treningsbilder = dataLaster.getTreningsbilder();
+        int[][][] testbilder = dataLaster.getTestbilder();
 
-        // OPPG 1 b) Konverter pikselverdiene fra [0, 255] til [-1, 1])
+        // flateTreningsbilder = flatUtBilder(treningsbilder);
+        // flateTestbilder = flatUtBilder(testbilder);
+
+        // OPPG 1 b) Konverter pikselverdiene fra [0, 255] til [-1, 1]) - Normaliser
+
+        //double[][] normaliserteTreningsbilder = normaliser(flateTreningsbilder);
+        //double[][] normaliserteTestbilder = normaliser(flateTestbilder);
+
 
         // ###############################################################
         // TODO: OPPGAVE 2: NEVRALT NETTVERK -> BYGG NETTVERK
@@ -54,14 +63,48 @@ public class Oppgaver {
     // Metodene under kan være til hjelp for oppgave 1:
 
     private static int[][] flatUtBilder(final int[][][] bilder) {
-        return new int[0][];
+        final int antallBilder = bilder.length;
+        final int antallPixler = bilder[0].length * bilder[0][0].length;
+        final int[][] flateBilder = new int[antallBilder][antallPixler];
+
+        /*
+        for hvert bilde:
+            lagre flatt bilde med hjelpemetoden under.
+         */
+
+        return flateBilder;
     }
 
     private static int[] flatUtEttBilde(final int[][] bilde) {
-        return new int[0];
+        int pikselIndeks = 0;
+        final int[] flattBilde = new int[bilde.length * bilde[0].length];
+
+        /*
+        for hver rad i bilde:
+            for hver piksel i raden:
+                lagre piksel i et flatt bilde
+         */
+
+        return flattBilde;
     }
 
-    private static double[][] normaliser(final int[][] bilder) {
-        return new double[0][];
+    private static double[][] normaliser(final int[][] flateBilder) {
+        final int antallBilder = flateBilder.length;
+        final int antallPiksler = flateBilder[0].length;
+
+        final double[][] normaliserteBilder = new double[antallBilder][antallPiksler];
+
+        final double MAX_PIXEL_VERDI = 255.0; // FORDI VI VET DET :)
+
+        /*
+
+        For hvert bilde:
+            For hver piksel:
+                    normailser piksel
+
+         */
+
+
+        return normaliserteBilder;
     }
 }
