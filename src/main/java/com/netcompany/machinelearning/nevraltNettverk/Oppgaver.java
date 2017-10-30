@@ -32,7 +32,17 @@ public class Oppgaver {
         // ###############################################################
 
         // Bruk NevralNettverkBygger til å opprette ett nettverk.
-        // For nettverkslagene: husk at hvert input-lag må ha samme antall noder som forrige output-laget
+        // For nettverkslagene: husk at hvert input-lag må ha samme antall noder som forrige output-laget.
+        // Ved første input-lag må nettverket ta inn alle pikslene til et helt bilde. Hva må siste lag med ut-noder ha?
+
+        //final NevraltNettverk nevraltNettverk = new NevraltNettverkBygger()
+                // legg til første lag med inn- og ut-noder
+                // legg til flere lag
+                // avslutt med å bygge nettverket.
+
+
+        // Husk å sette antall epoker og batch størrelse.
+
 
         // ###############################################################
         // TODO: OPPGAVE 3: TREN OG TEST
