@@ -55,8 +55,9 @@ public class Oppgaver {
         // ###############################################################
 
         // Prøv med forskjellige lag.
-        // Sett forskjellige lengder på epoker.
-        // Sett forskjellige batch-størrelser.
+        // Prøv med ny læringsrate når du bygger nettverket. Standard er 0.006. Prøv å øke eller minske den
+        // Sett forskjellige lengder på epoker. F.eks 100, 200, 400
+        // Sett forskjellige batch-størrelser. F.eks 5, 10, 50, 100.
 
         // ###############################################################
         // TODO: OPPGAVE 5: Implementer app
