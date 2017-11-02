@@ -146,20 +146,20 @@ public class NevraltNettverk {
             System.out.println("==========================CONFUSION MATRIX==============================");
             System.out.println("");
 
-            String str = "\t\t\t\t\t\t\tVAR FAKTISK\n";
+            String str = "\t\t\t\t\t\t\t\tVAR FAKTISK\n";
 
 
 
             for (int i = 0; i < columns; i++) {
                 if (i == 0) {
-                    str += "              \t";
+                    str += "                 \t";
                 }
                 str += "["+i+"]"+"\t";
             }
 
             str += "\n";
 
-            str += "            [0]| ";
+            str += "              [0]| ";
 
             for(int i=0;i<rows;i++){
                 for(int j=0;j<columns;j++){
@@ -172,7 +172,7 @@ public class NevraltNettverk {
                     str = "PREDIKERT SOM ";
                 }
                 else {
-                    str = "            ";
+                    str = "              ";
                 }
                 str += "["+(i+1)+"]" + "| ";
             }
