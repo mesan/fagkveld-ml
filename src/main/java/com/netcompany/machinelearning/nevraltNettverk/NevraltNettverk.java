@@ -146,7 +146,7 @@ public class NevraltNettverk {
             System.out.println("==========================CONFUSION MATRIX==============================");
             System.out.println("");
 
-            String str = "\t\t\t\t\t\t\tPREDIKERT SOM\n";
+            String str = "\t\t\t\t\t\t\tVAR FAKTISK\n";
 
 
 
@@ -169,7 +169,7 @@ public class NevraltNettverk {
 
                 System.out.println(str + "|");
                 if (i == 4) {
-                    str = "VAR FAKTISK ";
+                    str = "PREDIKERT SOM ";
                 }
                 else {
                     str = "            ";
