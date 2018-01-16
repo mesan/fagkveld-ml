@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 public class SifferKlassifikatorApp extends Application {
 
     private ImageView myImageView;
+    private ImageView klasseIllustratedView;
     private Text klasse;
     private Button btnKlassifiser;
     private File valgtFil;
@@ -46,37 +47,49 @@ public class SifferKlassifikatorApp extends Application {
         klasse.setText("-");
 
         myImageView = new ImageView();
+        klasseIllustratedView = new ImageView();
 
         gridPane.add(btnLastInn, 0, 0);
         gridPane.add(btnKlassifiser, 1, 0);
         gridPane.add(myImageView, 0, 1, 2, 1);
         gridPane.add(klasseLabel, 0, 2);
         gridPane.add(klasse, 1, 2);
+        gridPane.add(klasseIllustratedView, 0, 3, 2, 1);
 
         final Group gruppe = new Group();
         gruppe.getChildren().add(gridPane);
-        final Scene scene = new Scene(gruppe, 300, 350, Color.WHITE);
+        final Scene scene = new Scene(gruppe, 300, 650, Color.WHITE);
 
         btnLastInn.setPrefWidth(150);
         btnKlassifiser.setPrefWidth(150);
         myImageView.setPreserveRatio(true);
         myImageView.setFitWidth(300);
+        klasseIllustratedView.setPreserveRatio(true);
+        klasseIllustratedView.setFitWidth(300);
 
         btnLastInn.setMaxWidth(Double.MAX_VALUE);
         btnKlassifiser.setMaxWidth(Double.MAX_VALUE);
 
         klassifikator = new SifferKlassifikator();
 
-        stage.setTitle("Jaja, det er i alle fall ikke Swing...");
+        stage.setTitle("AI is taking over");
         stage.setScene(scene);
         stage.show();
     }
+
 
     private final EventHandler<ActionEvent> klassifiserKnappLytter = new EventHandler<ActionEvent>() {
         @Override
         public void handle(final ActionEvent event) {
             final Integer predikertSiffer = klassifikator.prediker(valgtFil);
             klasse.setText(predikertSiffer.toString());
+
+            final String root = System.getProperty("user.dir");
+            final String path = root + "/src/main/java/com/netcompany/machinelearning/data/prediction/"
+                    + predikertSiffer.toString() + ".png";
+            final File file = new File(path);
+            final Image image = new Image(file.toURI().toString());
+            klasseIllustratedView.setImage(image);
         }
     };
 
