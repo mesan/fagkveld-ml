@@ -1,8 +1,0 @@
-2017-02-27 22:56:44,872 - [INFO] - from com.netcompany.machinelearning.preprosessering.DataLaster in main
-                
-Laster inn subset (5%) av trenings- og testdata.
-
-2017-02-27 22:56:53,987 - [INFO] - from com.netcompany.machinelearning.preprosessering.DataLaster in main
-                
-Ferdig med å laste inn bilder.
-
