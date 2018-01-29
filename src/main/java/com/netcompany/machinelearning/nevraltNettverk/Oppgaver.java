@@ -1,6 +1,5 @@
 package com.netcompany.machinelearning.nevraltNettverk;
 
-import com.netcompany.machinelearning.app.SifferKlassifikatorApp;
 import com.netcompany.machinelearning.preprosessering.DataLaster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,13 +22,13 @@ public class Oppgaver {
         int[][][] treningsbilder = dataLaster.getTreningsbilder();
         int[][][] testbilder = dataLaster.getTestbilder();
 
-        // flateTreningsbilder = flatUtBilder(treningsbilder);
-        // flateTestbilder = flatUtBilder(testbilder);
+        int[][] flateTreningsbilder = flatUtBilder(mat inn treningsbilder her);
+        int[][] flateTestbilder = flatUtBilder(mat inn testbilder her);
 
         // OPPG 1 b) Konverter pikselverdiene fra [0, 255] til [-1, 1]) - Normaliser
 
-        //double[][] normaliserteTreningsbilder = normaliser(flateTreningsbilder);
-        //double[][] normaliserteTestbilder = normaliser(flateTestbilder);
+        double[][] normaliserteTreningsbilder = normaliser(flateTreningsbilder);
+        double[][] normaliserteTestbilder = normaliser(flateTestbilder);
 
 
         // ###############################################################
@@ -68,10 +67,12 @@ public class Oppgaver {
         final int[][] flateBilder = new int[antallBilder][antallPixler];
 
         /*
-        for hvert bilde:
-            lagre flatt bilde med hjelpemetoden under.
+            HINT:
+            Send inn parameteret på en fornuftig måte
          */
-
+        for (int i = 0; i < antallBilder; i++) {
+            flateBilder[i] = flatUtEttBilde(send inn parameter her);
+        }
         return flateBilder;
     }
 
@@ -79,11 +80,20 @@ public class Oppgaver {
         int pikselIndeks = 0;
         final int[] flattBilde = new int[bilde.length * bilde[0].length];
 
-        /*
+        /* HINT:
         for hver rad i bilde:
             for hver piksel i raden:
                 lagre piksel i et flatt bilde
+                øk pikselindeks med 1
+
          */
+
+        for (final int[] rad : bilde) {
+            for (final int piksel : rad) {
+                flattBilde[pikselIndeks] = legg til piksel fra rad her;
+                øk pikselindeks med en her;
+            }
+        }
 
         return flattBilde;
     }
@@ -97,12 +107,28 @@ public class Oppgaver {
         final double MAX_PIXEL_VERDI = 255.0; // FORDI VI VET DET :)
 
         /*
+            HINT:
+            For hvert bilde:
+                For hver piksel:
+                        normaliser piksel
 
-        For hvert bilde:
-            For hver piksel:
-                    normailser piksel
+            Formelen for normalisering ligger under feature scaling på siden:
+            https://en.wikipedia.org/wiki/Normalization_(statistics)
+
+            Fra formelen gjelder våres verdier:
+            X = Bildets pikselverdi
+            Xmin = 0,
+            Xmax = 255
+            a = 1
+            b = - 1
 
          */
+
+        for (int bildeIndeks ; bildeIndeks < antallBilder ; bildeIndeks++) {
+            for (int piksel ; piksel < antallPiksler ; piksel++) {
+                normaliserteBilder[bildeIndeks][piksel] = (bildets pikselverdi / xMax) * (b - a) + a
+            }
+        }
 
 
         return normaliserteBilder;
