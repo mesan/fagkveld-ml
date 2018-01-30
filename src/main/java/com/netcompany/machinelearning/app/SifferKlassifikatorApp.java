@@ -32,6 +32,13 @@ public class SifferKlassifikatorApp extends Application {
     private File valgtFil;
     private SifferKlassifikator klassifikator;
 
+    /**
+     * Starter appen.
+     */
+    public static void start() {
+        launch();
+    }
+
     @Override
     public void start(final Stage stage) {
 
@@ -116,13 +123,4 @@ public class SifferKlassifikatorApp extends Application {
             }
         }
     };
-
-    public static void main(final String[] args) {
-        launch();
-    }
-
-    public static void start() {
-        String[] args = new String[] {"Start SifferKlassifikatorApp"};
-        main(args);
-    }
 }

@@ -24,5 +24,9 @@ class SifferKlassifikator {
 
         return (Integer) (int) (Math.random() * 10);
     }
+
+    public static void main(final String[] args) {
+        SifferKlassifikatorApp.start();
+    }
 }
 
